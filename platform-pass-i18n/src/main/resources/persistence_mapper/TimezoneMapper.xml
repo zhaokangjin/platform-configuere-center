@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.platform.i18n.persistence.TimezoneMapper">
+  <resultMap id="BaseResultMap" type="com.platform.i18n.dto.Timezone">
+    <id column="COUNTRY_CODE" jdbcType="CHAR" property="countryCode" />
+    <result column="TIMEZONE" jdbcType="VARCHAR" property="timezone" />
+    <result column="COUNTRY_NAME" jdbcType="VARCHAR" property="countryName" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    COUNTRY_CODE, TIMEZONE, COUNTRY_NAME
+  </sql>
+  <select id="selectByExample" parameterType="com.platform.i18n.dto.TimezoneExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from tpt_timezone
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tpt_timezone
+    where COUNTRY_CODE = #{countryCode,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from tpt_timezone
+    where COUNTRY_CODE = #{countryCode,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.platform.i18n.dto.TimezoneExample">
+    delete from tpt_timezone
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.platform.i18n.dto.Timezone">
+    insert into tpt_timezone (COUNTRY_CODE, TIMEZONE, COUNTRY_NAME
+      )
+    values (#{countryCode,jdbcType=CHAR}, #{timezone,jdbcType=VARCHAR}, #{countryName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.platform.i18n.dto.Timezone">
+    insert into tpt_timezone
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="countryCode != null">
+        COUNTRY_CODE,
+      </if>
+      <if test="timezone != null">
+        TIMEZONE,
+      </if>
+      <if test="countryName != null">
+        COUNTRY_NAME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="countryCode != null">
+        #{countryCode,jdbcType=CHAR},
+      </if>
+      <if test="timezone != null">
+        #{timezone,jdbcType=VARCHAR},
+      </if>
+      <if test="countryName != null">
+        #{countryName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.platform.i18n.dto.TimezoneExample" resultType="java.lang.Long">
+    select count(*) from tpt_timezone
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update tpt_timezone
+    <set>
+      <if test="record.countryCode != null">
+        COUNTRY_CODE = #{record.countryCode,jdbcType=CHAR},
+      </if>
+      <if test="record.timezone != null">
+        TIMEZONE = #{record.timezone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.countryName != null">
+        COUNTRY_NAME = #{record.countryName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update tpt_timezone
+    set COUNTRY_CODE = #{record.countryCode,jdbcType=CHAR},
+      TIMEZONE = #{record.timezone,jdbcType=VARCHAR},
+      COUNTRY_NAME = #{record.countryName,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.platform.i18n.dto.Timezone">
+    update tpt_timezone
+    <set>
+      <if test="timezone != null">
+        TIMEZONE = #{timezone,jdbcType=VARCHAR},
+      </if>
+      <if test="countryName != null">
+        COUNTRY_NAME = #{countryName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where COUNTRY_CODE = #{countryCode,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.platform.i18n.dto.Timezone">
+    update tpt_timezone
+    set TIMEZONE = #{timezone,jdbcType=VARCHAR},
+      COUNTRY_NAME = #{countryName,jdbcType=VARCHAR}
+    where COUNTRY_CODE = #{countryCode,jdbcType=CHAR}
+  </update>
+</mapper>
