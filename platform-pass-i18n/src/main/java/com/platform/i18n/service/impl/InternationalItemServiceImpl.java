@@ -21,7 +21,6 @@ public class InternationalItemServiceImpl implements InternationalItemService{
 	@Override
 	public long countByExample(InternationalItemExample example) {
 		InternationalItemExample examples =new InternationalItemExample();
-
 		return 0;
 	}
 
