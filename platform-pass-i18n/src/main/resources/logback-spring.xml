@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+	<include resource="org/springframework/boot/logging/logback/base.xml"/>  
+	<!--输出到mysql数据库的appender配置 -->
+	<appender name="mysql_db_log" class="ch.qos.logback.classic.db.DBAppender">
+		<connectionSource class="ch.qos.logback.core.db.DriverManagerConnectionSource">
+			<driverClass>com.mysql.jdbc.Driver</driverClass>
+			<url>jdbc:mysql://127.0.0.1:3306/platform_i18n?characterEncoding=utf8</url>
+			<user>root</user>
+			<password>23990308</password>
+		</connectionSource>
+	</appender>
+	<root level="debug">
+	  <appender-ref ref="mysql_db_log" />
+	</root>
+</configuration>

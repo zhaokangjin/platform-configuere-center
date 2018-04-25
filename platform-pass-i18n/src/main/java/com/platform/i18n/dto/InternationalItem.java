@@ -1,5 +1,7 @@
 package com.platform.i18n.dto;
 
+import org.springframework.beans.factory.annotation.Value;
+
 public class InternationalItem {
     // 翻译ID >>>表字段 : TRANSLATION_ID
     private String translationId;
@@ -8,6 +10,7 @@ public class InternationalItem {
     private String internationalId;
 
     // 名称 >>>表字段 : NAME
+    @Value("${name}")
     private String name;
 
     // 国家编码 >>>表字段 : COUNTRY_CODE

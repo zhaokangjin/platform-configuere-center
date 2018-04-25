@@ -12,7 +12,7 @@ public interface InternationalItemService{
 
 	public int deleteByPrimaryKey(String translationId);
 
-	public int insert(InternationalItemExample record);
+	public int insert(InternationalItem record);
 
 	public int insertSelective(InternationalItemExample record);
 
