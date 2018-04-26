@@ -4,6 +4,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 import com.platform.configure.env.KafkaConfigure;
+import com.platform.configure.env.LogConfigure;
 import com.platform.configure.env.MongoConfigure;
 import com.platform.configure.env.MySQLConfigure;
 import com.platform.configure.env.OracleConfigure;
@@ -17,6 +18,7 @@ public class ModuleConfigure {
 	private MySQLConfigure mySqlConfigure;
 	private OracleConfigure oracleConfigure;
 	private RedisConfigure redisConfigure;
+	private LogConfigure logConfigure;
 	private String gateWay;
 	private String staticToken;
 	public KafkaConfigure getKafkaConfigure() {
@@ -61,6 +63,12 @@ public class ModuleConfigure {
 	}
 	public void setMySqlConfigure(MySQLConfigure mySqlConfigure) {
 		this.mySqlConfigure = mySqlConfigure;
+	}
+	public LogConfigure getLogConfigure() {
+		return logConfigure;
+	}
+	public void setLogConfigure(LogConfigure logConfigure) {
+		this.logConfigure = logConfigure;
 	}
 
 }

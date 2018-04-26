@@ -1,6 +1,5 @@
 package com.platform.i18n.controller;
 
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -52,13 +51,13 @@ public class InternationalItemController {
 	}
 	@RequestMapping(value="/insert",method={RequestMethod.POST})
 	public ResultDto<InternationalItem> insert() {
-		String name=moduleConfigure.getKafkaConfigure().getIp();
+		String name=moduleConfigure.getKafkaConfigure().getUserName();
 		InternationalItem iInternationalItem=new InternationalItem();
 		iInternationalItem.setCountryCode("22");
 		iInternationalItem.setInternationalId(UUID.randomUUID().toString());
 		Date date=new Date();
 		
-		iInternationalItem.setName("second"+date.getSeconds());
+		iInternationalItem.setName(name+date.getTime());
 		iInternationalItem.setTranslationId(UUID.randomUUID().toString());
 		internationalItemService.insert(iInternationalItem);
 		logger.error("INFO:"+JSON.toJSONString(iInternationalItem));
