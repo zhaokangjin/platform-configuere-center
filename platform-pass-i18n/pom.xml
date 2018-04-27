@@ -3,22 +3,13 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.platform</groupId>
-		<artifactId>platform-pass-parent</artifactId>
+		<artifactId>platform-configureCenter</artifactId>
 		<version>1.0.1</version>
 	</parent>
 	<artifactId>platform-pass-i18n</artifactId>
 	<name>com.platform</name>
 	<description>com.platform</description>
 	<dependencies>
-		<dependency>
-			<groupId>com.platform.common</groupId>
-			<artifactId>common-utils</artifactId>
-			<version>1.0.1</version>
-		</dependency>
-		<dependency>
-			<groupId>com.platform.entry</groupId>
-			<artifactId>platform-entry</artifactId>
-			<version>1.0.1</version>
-		</dependency>
+
 	</dependencies>
 </project>

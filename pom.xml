@@ -8,11 +8,11 @@
 	</parent>
 
 	<groupId>com.platform</groupId>
-	<artifactId>platform-pass-parent</artifactId>
+	<artifactId>platform-configureCenter</artifactId>
 	<version>1.0.1</version>
 	<packaging>pom</packaging>
-	<name>platform-pass-parent</name>
-	<description>platform-pass-parent</description>
+	<name>platform-configureCenter</name>
+	<description>platform-configureCenter</description>
 
 	<properties>
 		<source.encoding>UTF-8</source.encoding>
@@ -70,6 +70,11 @@
 		<dependency>
 			<groupId>com.platform.commons</groupId>
 			<artifactId>platfor-common-utils</artifactId>
+			<version>1.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.platform.entry</groupId>
+			<artifactId>platform-entry</artifactId>
 			<version>1.0.1</version>
 		</dependency>
 		<dependency>
